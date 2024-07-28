@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from .models import Tweet
 from .forms import TweetForm
 
@@ -41,7 +40,6 @@ def tweet_delete(request, pk):
         tweet.delete()
         return redirect('tweet_list')
     return render(request, 'tweets/tweet_confirm_delete.html', {'tweet': tweet})
-
 
 def tweet_search(request):
     query = request.GET.get('q')
