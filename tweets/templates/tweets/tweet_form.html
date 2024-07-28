@@ -1,0 +1,13 @@
+{% extends 'users/base_generic.html' %}
+
+{% block title %}Create/Edit Tweet{% endblock %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Edit Tweet{% else %}Create Tweet{% endif %}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+  </form>
+  <a href="{% url 'tweet_list' %}">Back to tweet list</a>
+{% endblock %}

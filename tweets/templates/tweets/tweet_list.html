@@ -1,0 +1,17 @@
+{% extends 'users/base_generic.html' %}
+
+{% block title %}Tweet List{% endblock %}
+
+{% block content %}
+  <h2>Tweet List</h2>
+  <ul>
+    {% for tweet in tweets %}
+      <li>
+        {{ tweet.content }} - {{ tweet.created_at }}
+        <a href="{% url 'tweet_edit' tweet.pk %}">Edit</a>
+        <a href="{% url 'tweet_delete' tweet.pk %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'create_tweet' %}">Create a new tweet</a>
+{% endblock %}
